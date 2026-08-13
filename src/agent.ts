@@ -1,15 +1,12 @@
 import { ToolDef, AgentFindOptions, LLMCallback } from './types';
 
-const SYSTEM_PROMPT = `You are a tool selector for an AI agent. Your job is to pick the most relevant tools for the user's request.
+const SYSTEM_PROMPT = `You are a tool selector for an AI agent. Pick ONLY the tools directly needed to answer the user's current message — do not preload tools for potential follow-up questions.
 
-You will receive:
-1. A catalog of available tools, each with a name and one-line description
-2. The user's message
+Return ONLY a JSON object: {"tools": ["tool1", "tool2"]}. Pick as few tools as possible. For a straightforward data question, 2-4 tools is plenty. Only include more if the request genuinely spans multiple domains.
 
-Return ONLY a JSON object with one field: "tools" — an array of tool names that are most relevant to the user's request. Pick 3-8 tools. Include tools the user is likely to need based on their intent. Do NOT include tools that are clearly unrelated.
-
-Example response:
-{"tools": ["workbook_list", "workbook_create", "query_run", "query_schema"]}`;
+Example: "how many members" → {"tools": ["query_schema", "query_run"]}
+Example: "create a workbook for onboarding" → {"tools": ["workbook_create", "workbook_options", "workbook_teams", "workbook_set_tasks"]}
+Example: "show me reports and share the pipeline one" → {"tools": ["report_list", "report_share", "query_schema", "query_run"]}`;
 
 function buildToolCatalog(tools: ToolDef[]): string {
   return tools
