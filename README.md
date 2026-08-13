@@ -1,6 +1,6 @@
 # Hugin
 
-Progressive tool disclosure for LLM agents — selects only the most relevant tools from a large catalog before each request, instead of sending all tools every time. Two strategies: semantic matching (zero cost, zero deps) and agent-based selection (one extra LLM call, smarter).
+Progressive tool disclosure for LLM agents :  selects only the most relevant tools from a large catalog before each request, instead of sending all tools every time. Two strategies: semantic matching (zero cost, zero deps) and agent-based selection (one extra LLM call, smarter).
 
 Named after Odin's raven of thought, who scouts ahead and returns with what matters.
 
@@ -38,7 +38,7 @@ const tools = await findTools(userMessage, allTools, 'semantic', {
 
 ### Agent strategy (one extra LLM call)
 
-A lightweight LLM call picks the tools. You provide the LLM bridge — Hugin never touches an API key.
+A lightweight LLM call picks the tools. You provide the LLM bridge :  Hugin never touches an API key.
 
 ```ts
 const llmCall: LLMCallback = async (messages, model) => {
@@ -81,7 +81,7 @@ const reply = await mainAgent.create({
 | `options.llmCall` | `LLMCallback` | Required for `'agent'` strategy |
 | `options.model` | `string` | Required for `'agent'` strategy |
 
-Returns `Promise<ToolDef[]>` — the selected subset of tools.
+Returns `Promise<ToolDef[]>` :  the selected subset of tools.
 
 ### `ToolDef`
 
