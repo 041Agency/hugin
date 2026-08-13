@@ -1,0 +1,35 @@
+{
+  "name": "@fundr/hugin",
+  "version": "0.1.0",
+  "description": "Progressive tool disclosure for LLM agents — select the most relevant tools from a large catalog before each request. Semantic matching (zero deps) and agent-based strategies.",
+  "license": "MIT",
+  "author": "Fundr",
+  "keywords": [
+    "llm",
+    "tools",
+    "agent",
+    "progressive-disclosure",
+    "tool-selection",
+    "semantic-matching",
+    "context-window",
+    "token-efficiency"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
